@@ -1,0 +1,16 @@
+name:                hello
+version:             0.0.1
+synopsis:            Hello World!
+homepage:
+license:             MIT
+author:              Tsuru
+maintainer:          tsuru
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.8
+
+executable hello
+  main-is:             Main.hs
+  -- other-modules:
+  build-depends:       base ==4.6.*
+                     , scotty

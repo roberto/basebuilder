@@ -1,0 +1,19 @@
+#!/bin/bash -e
+
+SOURCE_DIR=/var/lib/tsuru
+source ${SOURCE_DIR}/base/deploy
+source ${SOURCE_DIR}/config
+
+CABALPATH=${HOME}/.cabal
+PATH=${CABALPATH}/bin:${PATH}
+
+export CABALPATH PATH
+
+if [ -f ${CURRENT_DIR}/*.cabal ]; then
+  pushd $CURRENT_DIR
+  cabal update
+  cabal install
+  popd
+fi
+
+/home/application/.venv/bin/python ${SOURCE_DIR}/hooks.py
